@@ -30,6 +30,16 @@ type RepositoriesRes struct {
 	Items   []Repository
 }
 
+func (r *Repositories) ListForWorkspace(ro *RepositoriesOptions) (*RepositoriesRes, error) {
+	urlPath := r.c.requestUrl("/repositories")
+	urlPath += fmt.Sprintf("/%s", *ro.Workspace)
+	repos, err := r.c.executePaginated("GET", urlPath, "", nil)
+	if err != nil {
+		return nil, err
+	}
+	return decodeRepositories(repos)
+}
+
 func (r *Repositories) ListForAccount(ro *RepositoriesOptions) (*RepositoriesRes, error) {
 	urlPath := "/repositories"
 	if ro.Owner != "" {

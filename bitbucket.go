@@ -142,11 +142,12 @@ type pipelines interface {
 }
 
 type RepositoriesOptions struct {
-	Owner   string  `json:"owner"`
-	Project string  `json:"project"`
-	Role    string  `json:"role"` // role=[owner|admin|contributor|member]
-	Page    *int    `json:"page"`
-	Keyword *string `json:"keyword"`
+	Owner     string  `json:"owner"`
+	Project   string  `json:"project"`
+	Role      string  `json:"role"` // role=[owner|admin|contributor|member]
+	Page      *int    `json:"page"`
+	Keyword   *string `json:"keyword"`
+	Workspace *string `json:"workspace"`
 }
 
 type RepositoryOptions struct {
